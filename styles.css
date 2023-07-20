@@ -1,4 +1,4 @@
-  /* styles.css */
+/* styles.css */
 body {
     margin: 0; /* Remove default body margin */
     overflow: hidden; /* Prevent scrollbars */
@@ -21,3 +21,20 @@ body {
     z-index: -1; /* Place the video behind other elements */
   }
   
+  /* Styling for the header section */
+  header {
+    position: relative; /* Ensure the header is positioned relative to the body */
+    z-index: 1; /* Place the header above the video */
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background color to make text more readable */
+  }
+  
+  h1 {
+    color: #FFFFFF; /* White color */
+    font-weight: bold; /* Bold font weight */
+  }
+  
+  /* Additional styles for the map container (if needed) */
+  #map {
+    position: relative; /* Ensure the map container is positioned relative to the body */
+    z-index: 1; /* Place the map above the video */
+  }
