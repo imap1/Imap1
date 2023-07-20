@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>School Bus Live Map</title>
+  <style>
+    /* Set the map container size */
+    #map {
+      width: 100%;
+      height: 800px; /* Adjust the height as needed */
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBibGS1WlSoTdZ5nDsjusjUeffE8814t2E&callback=initMap" async defer></script>
+  <script>
+    // The 'initMap' function will be called when the Google Maps API is loaded
+    function initMap() {
+      const mapOptions = {
+        center: { lat: 42.4048, lng: -82.1919 }, // Coordinates for San Francisco (adjust as needed)
+        zoom: 12 // Adjust the zoom level as needed
+      };
+
+      // Create the map instance
+      const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+      // Function to update the bus location on the map
+      function updateBusLocation(latitude, longitude) {
+        // Create a new LatLng object using the updated coordinates
+        const busLatLng = new google.maps.LatLng(latitude, longitude);
+
+        // Move the map center to the updated bus location
+        map.setCenter(busLatLng);
+
+        // Create a new marker at the updated bus location
+        const marker = new google.maps.Marker({
+          position: busLatLng,
+          map: map,
+          title: 'School Bus Location' // Title displayed when hovering over the marker
+        });
+      }
+
+      // Sample function to fetch bus location from the backend server and update the map
+      function fetchAndShowBusLocation() {
+        // Replace 'http://localhost:3000/api/bus/location' with the actual URL to your backend server API
+        fetch('http://localhost:3000/api/bus/location')
+          .then(response => response.json())
+          .then(data => {
+            // Assuming the API response contains 'latitude' and 'longitude' properties
+            const { latitude, longitude } = data;
+            updateBusLocation(latitude, longitude);
+          })
+          .catch(error => {
+            console.error('Error fetching bus location:', error);
+          });
+      }
+
+      // Call the function to fetch and show the initial bus location
+      fetchAndShowBusLocation();
+
+      // Optionally, update the bus location on a regular interval (e.g., every 10 seconds)
+      setInterval(fetchAndShowBusLocation, 10000);
+    }
+  </script>
+</body>
+</html>
