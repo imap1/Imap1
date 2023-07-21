@@ -1,48 +1,53 @@
 /* styles.css */
 body {
-    margin: 0; /* Remove default body margin */
-    overflow: hidden; /* Prevent scrollbars */
+    margin: 0;
+    overflow: hidden;
   }
   
-  /* Additional styles for the logo */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
   img.logo {
-    width: 100px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
   }
   
-  /* Styling for the video background */
+  h1 {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 0;
+  }
+  
   video#video-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure video covers the entire viewport */
-    z-index: -1; /* Place the video behind other elements */
+    object-fit: cover;
+    z-index: -1;
   }
   
-  /* Styling for the header section */
   header {
-    position: relative; /* Ensure the header is positioned relative to the body */
-    z-index: 1; /* Place the header above the video */
-    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background color to make text more readable */
-    display: flex; /* Use flexbox to arrange items side by side */
-    justify-content: space-between; /* Align items with equal space between them */
-    align-items: center; /* Align items vertically in the center */
-    padding: 10px 20px; /* Add padding to header content */
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
   }
   
-  h1 {
-    color: #FFFFFF; /* White color */
-    font-weight: bold; /* Bold font weight */
+  .dropdown-container {
+    display: flex;
   }
   
-  /* Styling for the dropdown menus */
   ul.dropdown-menu {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex; /* Use flexbox to arrange dropdown items side by side */
+    display: flex;
   }
   
   ul.dropdown-menu li {
@@ -69,3 +74,13 @@ body {
     display: block;
   }
   
+/* Blue Rectangle */
+.blue-rectangle {
+    background-color: rgb(48, 21, 199);
+    height: 120px; /* Adjust the height as needed */
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
