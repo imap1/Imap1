@@ -26,6 +26,10 @@ body {
     position: relative; /* Ensure the header is positioned relative to the body */
     z-index: 1; /* Place the header above the video */
     background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background color to make text more readable */
+    display: flex; /* Use flexbox to arrange items side by side */
+    justify-content: space-between; /* Align items with equal space between them */
+    align-items: center; /* Align items vertically in the center */
+    padding: 10px 20px; /* Add padding to header content */
   }
   
   h1 {
@@ -33,8 +37,35 @@ body {
     font-weight: bold; /* Bold font weight */
   }
   
-  /* Additional styles for the map container (if needed) */
-  #map {
-    position: relative; /* Ensure the map container is positioned relative to the body */
-    z-index: 1; /* Place the map above the video */
+  /* Styling for the dropdown menus */
+  ul.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox to arrange dropdown items side by side */
   }
+  
+  ul.dropdown-menu li {
+    display: inline-block;
+    position: relative;
+  }
+  
+  ul.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+  
+  ul.dropdown-menu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333333;
+  }
+  
+  ul.dropdown-menu li:hover ul {
+    display: block;
+  }
+  
