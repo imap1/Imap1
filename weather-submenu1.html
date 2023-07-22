@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IMAP1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Video Background -->
+  <video autoplay loop muted id="video-background">
+    <source src="videos/Digital World Map Background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <header>
+    <div class="logo-container">
+      <!-- Insert the logo using the <img> tag with the "logo" class -->
+      <a href="index.html">
+        <!-- Insert the logo using the <img> tag with the "logo" class -->
+        <img src="images/Logo%201.JPG" alt="My Website Logo" class="logo">
+      </a>
+      <h1>  1 Platform, Infinite Possibilities</h1>
+    </div>
+
+    <!-- Other header content goes here -->
+    <!-- Dropdown Menus -->
+    <div class="dropdown-container">
+      <!-- Dropdown Menu 1: Weather (Moved to the first position) -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Weather</a>
+          <ul>
+            <li><a href="weather-submenu1.html">Submenu 1-1</a></li>
+            <li><a href="weather-submenu2.html">Submenu 1-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 2: Add -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Add</a>
+          <ul>
+            <li><a href="add-submenu1.html">Submenu 2-1</a></li>
+            <li><a href="add-submenu2.html">Submenu 2-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 3: Lists -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Lists</a>
+          <ul>
+            <li><a href="lists-submenu1.html">Submenu 3-1</a></li>
+            <li><a href="lists-submenu2.html">Submenu 3-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 4: Reports -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Reports</a>
+          <ul>
+            <li><a href="reports-submenu1.html">Submenu 4-1</a></li>
+            <li><a href="reports-submenu2.html">Submenu 4-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 5: My Maps -->
+      <ul class="dropdown-menu">
+        <li><a href="#">My Maps</a>
+          <ul>
+            <li><a href="mymaps-submenu1.html">Submenu 5-1</a></li>
+            <li><a href="mymaps-submenu2.html">Submenu 5-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 6: Dashboard -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Dashboard</a>
+          <ul>
+            <li><a href="dashboard-submenu1.html">Submenu 6-1</a></li>
+            <li><a href="dashboard-submenu2.html">Submenu 6-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 7: Contacts -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Contacts</a>
+          <ul>
+            <li><a href="contacts-submenu1.html">Submenu 7-1</a></li>
+            <li><a href="contacts-submenu2.html">Submenu 7-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 8: Admin -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Admin</a>
+          <ul>
+            <li><a href="admin-submenu1.html">Submenu 8-1</a></li>
+            <li><a href="admin-submenu2.html">Submenu 8-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 9: About -->
+      <ul class="dropdown-menu">
+        <li><a href="#">About</a>
+          <ul>
+            <li><a href="about-submenu1.html">Submenu 9-1</a></li>
+            <li><a href="about-submenu2.html">Submenu 9-2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Dropdown Menu 10: Languages -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Languages</a>
+          <ul>
+            <li><a href="languages-submenu1.html">Submenu 10-1</a></li>
+            <li><a href="languages-submenu2.html">Submenu 10-2</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+    <!-- Blue Rectangle -->
+    <div class="blue-rectangle"></div>
+
+  <!-- Rest of the HTML content -->
+</body>
+</html>
+
+
+
+
+
+<!-- ... (previous code) ... -->
+
+
+<!-- Dropdown Menu 1: Weather (Moved to the first position) -->
+<ul class="dropdown-menu">
+    <li><a href="#">Weather</a>
+      <ul>
+        <!-- Weather API Content -->
+        <li id="weather-content">
+          Loading weather information...
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+  <!-- ... (rest of the code) ... -->
+  
+  <script>
+    // Function to fetch weather data from WeatherAPI.com API
+    function fetchWeatherData() {
+      const apiKey = "7a16da6dfdd94c7bacb12318232207"; // Replace with your new WeatherAPI.com API key
+      const location = "Chatham, Ontario"; // Replace with the desired location for weather information
+  
+      // Make the API request
+      fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=no`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Update the weather-content element with the weather information
+          const weatherContent = document.getElementById("weather-content");
+          weatherContent.innerHTML = `
+            <h3>${data.location.name}</h3>
+            <p>Temperature: ${data.current.temp_c} °C</p>
+            <p>Weather: ${data.current.condition.text}</p>
+            <p>Humidity: ${data.current.humidity}%</p>
+            <!-- Add more weather information as needed -->
+          `;
+        })
+        .catch(error => {
+          console.error("Error fetching weather data:", error.message);
+          const weatherContent = document.getElementById("weather-content");
+          weatherContent.innerHTML = "Failed to load weather information.";
+        });
+    }
+  
+    // Call the function to fetch weather data when the "Weather" dropdown is clicked
+    const weatherDropdown = document.querySelector('.dropdown-menu a[href="#"]');
+    weatherDropdown.addEventListener('click', () => {
+      console.log("Weather dropdown clicked.");
+      fetchWeatherData();
+    });
+  </script>
+  
